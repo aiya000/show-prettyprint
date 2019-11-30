@@ -1,0 +1,47 @@
+name: show-prettyprint
+version: '0.3'
+synopsis: ! 'Robust prettyprinter for output of auto-generated Show instances'
+description: See README.md
+category: User Interfaces, Text
+author: David Luposchainsky <dluposchainsky (λ) google>
+maintainer: aiya000
+license: BSD3
+license-file: LICENSE.md
+github: quchen/show-prettyprint
+copyright:
+  - David Luposchainsky
+  - '2016'
+
+extra-source-files:
+  - README.md
+  - CHANGELOG.md
+  - .stylish-haskell.yaml
+
+library:
+  source-dirs: src
+  ghc-options: -Wall
+  exposed-modules:
+    - Text.Show.Prettyprint
+    - Text.Show.Prettyprint.Diagnostic
+    - Text.Show.Prettyprint.Internal
+    dependencies:
+    - base >=4.7 && <5
+    - trifecta >=1.6
+    - prettyprinter >=1.2
+    - ansi-wl-pprint
+
+tests:
+  doctest:
+    main: Main.hs
+    source-dirs: test/Doctest
+    ghc-options:
+      - -Wall
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - base
+      - doctest >=0.9
+      - trifecta
+      - prettyprinter
+      - containers

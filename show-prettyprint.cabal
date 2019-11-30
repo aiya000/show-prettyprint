@@ -1,47 +1,78 @@
-name:                show-prettyprint
-version:             0.3
-synopsis:            Robust prettyprinter for output of auto-generated Show
-                     instances
-description:         See README.md
-homepage:            https://github.com/quchen/show-prettyprint#readme
-license:             BSD3
-license-file:        LICENSE.md
-author:              David Luposchainsky <dluposchainsky (λ) google>
-maintainer:          David Luposchainsky <dluposchainsky (λ) google>
-copyright:           David Luposchainsky, 2016
-category:            User Interfaces, Text
-build-type:          Simple
-extra-source-files:  README.md
-                   , CHANGELOG.md
-                   , .stylish-haskell.yaml
-cabal-version:       >=1.10
+cabal-version: 1.12
 
-library
-  hs-source-dirs:      src
-  exposed-modules:     Text.Show.Prettyprint
-                     , Text.Show.Prettyprint.Diagnostic
-                     , Text.Show.Prettyprint.Internal
-  build-depends:       base >= 4.7 && < 5
-                     , trifecta >= 1.6
-                     , prettyprinter >= 1.2
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 207e6b311e8c3e58b8d0f7cdc255a3b915666eb72f49b4b1f66f76ed5a3314d9
 
-                     -- Transitive dep of Trifecta, figure it out via that one
-                     , ansi-wl-pprint
-  ghc-options:         -Wall
-  default-language:    Haskell2010
-
-test-suite doctest
-  type:                exitcode-stdio-1.0
-  hs-source-dirs:      test/Doctest
-  main-is:             Main.hs
-  build-depends:       base
-                     , doctest >= 0.9
-                     , trifecta
-                     , prettyprinter
-                     , containers
-  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
-  default-language:    Haskell2010
+name:           show-prettyprint
+version:        0.3
+synopsis:       Robust prettyprinter for output of auto-generated Show instances
+description:    See README.md
+category:       User Interfaces, Text
+homepage:       https://github.com/quchen/show-prettyprint#readme
+bug-reports:    https://github.com/quchen/show-prettyprint/issues
+author:         David Luposchainsky <dluposchainsky (λ) google>
+maintainer:     aiya000
+copyright:      David Luposchainsky,
+                2016
+license:        BSD3
+license-file:   LICENSE.md
+build-type:     Simple
+extra-source-files:
+    README.md
+    CHANGELOG.md
+    .stylish-haskell.yaml
 
 source-repository head
-  type:     git
+  type: git
   location: https://github.com/quchen/show-prettyprint
+
+library
+  exposed-modules:
+      Text.Show.Prettyprint
+      Text.Show.Prettyprint.Diagnostic
+      Text.Show.Prettyprint.Internal
+  other-modules:
+      Paths_show_prettyprint
+  hs-source-dirs:
+      src
+  ghc-options: -Wall
+  build-depends:
+      ansi-wl-pprint
+    , base >=4.7 && <5
+    , prettyprinter >=1.2
+    , trifecta >=1.6
+  default-language: Haskell2010
+
+executable show-prettyprint
+  main-is: Main.hs
+  other-modules:
+      Paths_show_prettyprint
+  hs-source-dirs:
+      app
+  build-depends:
+      ansi-wl-pprint
+    , base >=4.7 && <5
+    , prettyprinter >=1.2
+    , show-prettyprint
+    , trifecta >=1.6
+  default-language: Haskell2010
+
+test-suite doctest
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_show_prettyprint
+  hs-source-dirs:
+      test/Doctest
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      ansi-wl-pprint
+    , base
+    , containers
+    , doctest >=0.9
+    , prettyprinter
+    , trifecta
+  default-language: Haskell2010
