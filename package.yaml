@@ -17,6 +17,13 @@ extra-source-files:
   - CHANGELOG.md
   - .stylish-haskell.yaml
 
+executables:
+  show-prettyprint:
+    source-dirs: app
+    main: Main.hs
+    dependencies:
+      - show-prettyprint
+
 library:
   source-dirs: src
   ghc-options: -Wall
@@ -24,11 +31,6 @@ library:
     - Text.Show.Prettyprint
     - Text.Show.Prettyprint.Diagnostic
     - Text.Show.Prettyprint.Internal
-    dependencies:
-    - base >=4.7 && <5
-    - trifecta >=1.6
-    - prettyprinter >=1.2
-    - ansi-wl-pprint
 
 tests:
   doctest:
